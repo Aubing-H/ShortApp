@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/shape_corner"
+    android:layout_margin="1dp">
+
+    <ImageView
+        android:id="@+id/videoImage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:layout_gravity="center"
+        android:layout_marginTop="40sp"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        android:padding="5dp">
+
+        <com.example.shortapp.CircleImageView
+            android:id="@+id/circleView"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:scaleType="center" />
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="@color/colorBright"
+            android:layout_toEndOf="@+id/circleView"
+            android:layout_marginBottom="2dp"
+            android:layout_marginStart="5dp"
+            android:singleLine="true"
+            android:ellipsize="end"/>
+
+        <TextView
+            android:id="@+id/description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="10sp"
+            android:textColor="@color/colorBright"
+            android:layout_below="@+id/name"
+            android:layout_alignStart="@+id/name"
+            android:lines="2"
+            android:ellipsize="end"/>
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/likeCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="14sp"
+        android:textColor="#ff8"
+        android:textStyle="italic"
+        android:layout_margin="3dp"
+        android:layout_gravity="left|bottom"/>
+<!--        android:layout_below="@+id/circleView"-->
+<!--        android:layout_alignStart="@+id/circleView"-->
+
+</FrameLayout>
