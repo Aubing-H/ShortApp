@@ -9,6 +9,7 @@ import android.content.Intent;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,6 +43,18 @@ public class MainActivity extends AppCompatActivity {
         articles = new ArrayList<>();
         recyclerView.setAdapter(myAdapter);
         recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
+        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+                if(newState == RecyclerView.SCROLL_STATE_IDLE){
+                    // 滑动结束
+                    int pos = ((GridLayoutManager)recyclerView.getLayoutManager()).findLastVisibleItemPosition();
+                    if(pos == articles.size() - 1)
+                        Toast.makeText(MainActivity.this, "没有更多视频啦~", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
         //获取数据
         getData();
         Log.d(MAT, "finish");

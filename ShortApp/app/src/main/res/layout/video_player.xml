@@ -7,23 +7,18 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <WebView
-            android:id="@+id/web_view"
+        <SurfaceView
+            android:id="@+id/surfaceView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="wrap_content"/>
 
-<!--        <SurfaceView-->
-<!--            android:id="@+id/surfaceView"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"/>-->
-
-<!--        <TextView-->
-<!--            android:id="@+id/text_temp"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:text="video_player"-->
-<!--            android:textColor="@color/colorAccent"-->
-<!--            android:textSize="15sp"/>-->
+        <TextView
+            android:id="@+id/text_temp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="video_player"
+            android:textColor="@color/colorAccent"
+            android:textSize="15sp"/>
 
     </FrameLayout>
 

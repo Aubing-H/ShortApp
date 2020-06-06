@@ -75,7 +75,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
             Glide.with(view).load(item.feedurl).apply(options).into(imageView);
             nameText.setText(item.nickname);
             descText.setText(item.description);
-            likeCount.setText("♥ " + String.valueOf(item.likecount));
+            String count = item.likecount >= 10000 ? "" + new java.text.DecimalFormat("#.0").format((float)item.likecount/10000) + "w" : String.valueOf(item.likecount);
+            likeCount.setText("♥ " + count);
         }
 
         public void onClick(View view){
