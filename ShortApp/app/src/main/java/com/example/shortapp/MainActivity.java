@@ -32,20 +32,21 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        recyclerView = findViewById(R.id.recyclerView);
+        recyclerView = findViewById(R.id.recyclerView); //绑定视图中的recycleView
         MyAdapter.ListItemClickListener listItemClickListener = clickItemIndex -> {
-            // 跳转到新的播放页面, 并传入相关参数
+            // 实现接口，跳转到新的播放页面, 并传入相关参数
             Intent intent = new Intent(MainActivity.this, VideoPlayer.class);
             intent.putExtra("videoUrl", articles.get(clickItemIndex).feedurl);
+            intent.putExtra("imageUrl", articles.get(clickItemIndex).avatar);
             startActivity(intent);
         };
-        myAdapter = new MyAdapter(listItemClickListener);
+        myAdapter = new MyAdapter(listItemClickListener); //构造myAdapter对象
         articles = new ArrayList<>();
-        recyclerView.setAdapter(myAdapter);
-        recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
+        recyclerView.setAdapter(myAdapter); //绑定适配器
+        recyclerView.setLayoutManager(new GridLayoutManager(this, 2)); //设置2列的网格布局
         recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
-            public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
+            public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) { //滑动事件监听
                 super.onScrollStateChanged(recyclerView, newState);
                 if(newState == RecyclerView.SCROLL_STATE_IDLE){
                     // 滑动结束
@@ -62,12 +63,12 @@ public class MainActivity extends AppCompatActivity {
 
     private void getData(){
         try{
-            Retrofit.Builder builder = new Retrofit.Builder();
-            builder.baseUrl(HttpUrl.get("https://beiyou.bytedance.com/"));
-            builder.addConverterFactory(GsonConverterFactory.create());
-            Retrofit retrofit = builder.build();
-            ApiService apiService = retrofit.create(ApiService.class);
-            apiService.getArticles().enqueue(new Callback<List<Article>>() {
+            Retrofit retrofit = new Retrofit.Builder()
+                    .baseUrl(HttpUrl.get("https://beiyou.bytedance.com/")) //json数据根目录
+                    .addConverterFactory(GsonConverterFactory.create()) //使用gson解析数据
+                    .build();
+            ApiService apiService = retrofit.create(ApiService.class); //retrofit进行接口重构
+            apiService.getArticles().enqueue(new Callback<List<Article>>() { //请求接口实现
                 @Override
                 public void onResponse(Call<List<Article>> call, Response<List<Article>> response) {
                     if(response.body() != null){

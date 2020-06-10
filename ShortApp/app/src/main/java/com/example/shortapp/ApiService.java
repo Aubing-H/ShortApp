@@ -8,6 +8,6 @@ import retrofit2.http.GET;
 
 public interface ApiService {
     // https://beiyou.bytedance.com/api/invoke/video/invoke/video
-    @GET("api/invoke/video/invoke/video")
+    @GET("api/invoke/video/invoke/video") //请求数据子目录
     Call<List<Article>> getArticles();
 }

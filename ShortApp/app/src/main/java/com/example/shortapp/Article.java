@@ -25,5 +25,4 @@ public class Article{
     public String avatar;
     @SerializedName("likecount")
     public int likecount;
-
 }

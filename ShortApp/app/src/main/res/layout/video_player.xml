@@ -1,25 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<com.example.shortapp.MyFrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/frame_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorDark">
 
-    <FrameLayout
+    <SurfaceView
+        android:id="@+id/surfaceView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"/>
 
-        <SurfaceView
-            android:id="@+id/surfaceView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+    <LinearLayout
+        android:id="@+id/linear_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="right|center_vertical"
+        android:padding="10dp">
 
-        <TextView
-            android:id="@+id/text_temp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="video_player"
-            android:textColor="@color/colorAccent"
-            android:textSize="15sp"/>
+        <ImageView
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:visibility="invisible"/>
 
-    </FrameLayout>
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/userImage"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            app:border_width="3dp"
+            app:border_color="#ddd"
+            android:layout_marginBottom="30dp"/>
 
-</LinearLayout>
+        <ImageView
+            android:id="@+id/likeImage"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/white_heart"/>
+
+    </LinearLayout>
+
+</com.example.shortapp.MyFrameLayout>

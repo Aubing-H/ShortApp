@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import de.hdodenhof.circleimageview.CircleImageView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -69,8 +70,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
             Article item = articleList.get(i);
             RequestOptions options = new RequestOptions();
             options.centerCrop()
-                    .placeholder(R.drawable.image_default)
-                    .error(R.drawable.error);
+                    .placeholder(R.drawable.my_default)
+                    .error(R.drawable.net_error);
             Glide.with(view).load(item.avatar).apply(options).into(circleView);
             Glide.with(view).load(item.feedurl).apply(options).into(imageView);
             nameText.setText(item.nickname);
